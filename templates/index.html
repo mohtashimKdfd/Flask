@@ -5,5 +5,30 @@
 {% block body %} 
 
 <h1>Helloooooooooooo</h1>
+<form action="/" method="POST">
+    <input type="text" name="name" id="" placeholder="Enter your name">
+    <input type="submit" value="Submit">
+</form>
+
+<h1>User Lists</h1>
+<table border="1" width="100%" style="text-align:center">
+    <tr>
+        <th>User</th>
+        <th>Date created</th>
+        <th>Time created</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for user in users %}
+    <tr>
+        <td><h4>{{ user.name }}</h4></td>
+        <td><h3>{{ user.date_created.date() }}</h3></td>
+        <td>{{ user.date_created.time() }}</td>
+        <td><a href="/delete/{{ user.id }}">Delete {{ user.name }} </a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
 
 {% endblock %}
